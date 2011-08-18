@@ -1,4 +1,8 @@
+# rails
 .bundle
 db/*.sqlite3
 log/*.log
 tmp/
+
+# sass
+public/stylesheets
