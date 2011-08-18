@@ -5,9 +5,11 @@ class PlansController < ApplicationController
   include AuthenticationHelper
 
   def show
+    title_components << "#{@account.login}'s Plan"
   end
 
   def edit
+    title_components << "Edit #{@account.login}'s Plan"
   end
 
   def update
