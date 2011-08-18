@@ -24,9 +24,6 @@ module ApplicationHelper
   end
 
   def canonical_link_tag
-    # [Jay] the `tag` helper was stupidly html-encoding the canonical url,
-    # which resulted in query strings like ?a=1&amp;b=2, which is teh sux.
     tag :link, :rel => 'canonical', :href => canonical_url
-    # "<link rel='canonical' href='#{canonical_url}' />"
   end
 end
