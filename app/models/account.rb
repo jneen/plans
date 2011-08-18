@@ -26,6 +26,10 @@ class Account < ActiveRecord::Base
     self.plan = Plan.new(account: self)
   end
 
+  def guest?
+    !persisted?
+  end
+
 private
   def hash_password(pw)
     hash_string("--#{self.salt}--#{pw}--")
