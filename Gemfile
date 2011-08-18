@@ -3,8 +3,10 @@ source 'http://rubygems.org'
 gem 'rails', '~> 3'
 
 gem 'pg'
-
 gem 'squeel'
+
+gem 'haml'
+gem 'compass'
 
 group :development, :test do
   gem 'heroku', '~> 2.4'
