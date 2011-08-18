@@ -57,6 +57,7 @@ Plans::Application.routes.draw do
   # match ':controller(/:action(/:id(.:format)))'
 
   resources :accounts, :only => [:new, :create]
+  resources :sessions, :only => [:new, :create]
 
   get ':id' => 'plans#show', :as => :plan
   get ':id/edit' => 'plans#edit', :as => :edit_plan

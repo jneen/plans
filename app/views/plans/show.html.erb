@@ -1,5 +1,10 @@
 <section>
   <h1><%= @account.login %>'s plan</h1>
-
+  <div>
   <%= @account.plan.contents %>
+  </div>
+
+  <%- if current_account == @account %>
+    <%= link_to 'edit', edit_plan_path(@account.login) %>
+  <%- end -%>
 </section>
