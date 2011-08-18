@@ -59,6 +59,8 @@ Plans::Application.routes.draw do
   resources :accounts, :only => [:new, :create]
   resources :sessions, :only => [:new, :create]
 
+  root :to => 'home#index'
+
   get ':id' => 'plans#show', :as => :plan
   get ':id/edit' => 'plans#edit', :as => :edit_plan
   put ':id' => 'plans#update', :as => :update_plan
