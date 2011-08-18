@@ -1,0 +1,5 @@
+--color
+--profile
+-I ./spec
+-r ./config/environment
+-r spec_helper

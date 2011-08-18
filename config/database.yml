@@ -1,26 +1,16 @@
-# PostgreSQL. Versions 7.4 and 8.x are supported.
-#
-# Install the pg driver:
-#   gem install pg
-# On Mac OS X with macports:
-#   gem install pg -- --with-pg-config=/opt/local/lib/postgresql84/bin/pg_config
-# On Windows:
-#   gem install pg
-#       Choose the win32 build.
-#       Install PostgreSQL and put its /bin directory on your path.
-development:
+shared: &shared
   adapter: postgresql
   encoding: unicode
-  database: plans_development
-  pool: 5
-  username: plans
-  password:
 
-  # Connect on a TCP socket. Omitted by default since the client uses a
-  # domain socket that doesn't need configuration. Windows does not have
-  # domain sockets, so uncomment these lines.
-  #host: localhost
-  #port: 5432
+localdb: &localdb
+  <<: *shared
+  username: plans
+  password: pl4ns
+  pool: 5
+
+development:
+  <<: *localdb
+  database: plans_development
 
   # Schema search path. The server defaults to $user,public
   #schema_search_path: myapp,sharedapp,public
@@ -35,12 +25,8 @@ development:
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  adapter: postgresql
-  encoding: unicode
+  <<: *localdb
   database: plans_test
-  pool: 5
-  username: plans
-  password:
 
 production:
   adapter: postgresql

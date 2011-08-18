@@ -55,4 +55,11 @@ Plans::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
+
+  resources :accounts, :only => [:new, :create]
+
+  get ':id' => 'plans#show', :as => :plan
+  get ':id/edit' => 'plans#edit', :as => :edit_plan
+  put ':id' => 'plans#update', :as => :update_plan
+  delete ':id' => 'plans#delete', :as => :delete_plan
 end

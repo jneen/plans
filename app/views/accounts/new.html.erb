@@ -1,0 +1,13 @@
+<%= form_for @account do |f| %>
+  <p>
+    <%= label_tag :login, 'Plan name:' %>
+    <%= f.text_field :login %>
+  </p>
+
+  <p>
+    <%= label_tag :password, 'Password:' %>
+    <%= f.password_field :password %>
+  </p>
+
+  <%= f.submit 'Start a plan!' %>
+<%- end -%>
