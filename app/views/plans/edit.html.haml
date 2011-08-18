@@ -1,9 +1,7 @@
-<section>
-  <h1>Editing <%= @account.login %>'s plan.</h1>
+%section
+  %h1 Editing #{@account.login}'s plan.
 
-  <%= form_for @account.plan, :url => plan_path(@account.login) do |f| %>
-    <p><%= label_tag :contents, 'Contents' %>
-    <p><%= f.text_area :contents %>
-    <%= f.submit %>
-  <%- end -%>
-</section>
+  = form_for @account.plan, url: plan_path(@account.login) do |f|
+    = label_tag :contents, 'Contents'
+    = f.text_area :contents
+    = f.submit

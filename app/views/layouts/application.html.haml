@@ -1,14 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Plans</title>
-  <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
-  <%= csrf_meta_tag %>
-</head>
-<body>
+!!! html
+%html
+  %head
+    = title_tag
+    = stylesheet_link_tag 'shared'
+    = csrf_meta_tag
+    = canonical_link_tag
 
-<%= yield %>
+    / begin yielded content
+    = yield :head
 
-</body>
-</html>
+  %body
+    = render partial: 'layouts/application/header'
+    = yield

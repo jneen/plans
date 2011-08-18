@@ -1,10 +1,9 @@
-<section>
-  <h1><%= @account.login %>'s plan</h1>
-  <div>
-  <%= @account.plan.contents %>
-  </div>
+- content_for :head do
+  = stylesheet_link_tag 'plans/show'
 
-  <%- if current_account == @account %>
-    <%= link_to 'edit', edit_plan_path(@account.login) %>
-  <%- end -%>
-</section>
+%h1 #{@account.login}'s plan
+- if current_account == @account
+  %a#edit_link{href: edit_plan_path(@account.login)} Edit
+
+%article#plan
+  #contents= @account.plan.contents
