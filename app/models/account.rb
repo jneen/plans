@@ -45,8 +45,9 @@ class Account < ActiveRecord::Base
   end
 
   def fingers
-    # TODO: fix the n+1 problem here
-    auto_fingers.select { |af| fingering_for(af).viewed_at < af.plan.updated_at }
+    auto_fingers
+      .joins(:plan)
+      .where { plans.updated_at > auto_fingers.viewed_at }
   end
 
   def fingering_for(other)
