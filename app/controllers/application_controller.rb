@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  include AuthenticationHelper
+
   protect_from_forgery
 private
   def title_components

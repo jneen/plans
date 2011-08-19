@@ -57,7 +57,11 @@ Plans::Application.routes.draw do
   # match ':controller(/:action(/:id(.:format)))'
 
   resources :accounts, :only => [:new, :create]
-  resources :sessions, :only => [:new, :create]
+  resources :sessions, :only => [:new, :create] do
+    collection do
+      get :clear
+    end
+  end
 
   root :to => 'home#index'
 

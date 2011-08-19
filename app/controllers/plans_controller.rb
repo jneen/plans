@@ -1,6 +1,7 @@
 class PlansController < ApplicationController
   before_filter :find_account
-  before_filter :protect, :only => [:edit, :update]
+  before_filter :restrict_to_registered
+  before_filter :restrict_to_owner, :only => [:edit, :update]
 
   include AuthenticationHelper
 
@@ -20,7 +21,14 @@ class PlansController < ApplicationController
   end
 
 private
-  def protect
+  def restrict_to_registered
+    if current_account.guest?
+      session[:redirect] = canonical_path
+      redirect_to new_session_path
+    end
+  end
+
+  def restrict_to_owner
     redirect_to plan_path(@account.login) unless current_account == @account
   end
 
