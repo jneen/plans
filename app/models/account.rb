@@ -3,6 +3,16 @@ require 'digest'
 class Account < ActiveRecord::Base
   has_one :plan
 
+  has_many :auto_finger_relations, :class_name => 'AutoFinger'
+  has_many :auto_fingers,
+    :through => :auto_finger_relations,
+    :class_name => 'Account',
+    :source => :fingered
+
+  def self.[](name)
+    find_by_login(name.to_s)
+  end
+
   def password=(pw)
     self.crypted_password = hash_password(pw)
   end
@@ -28,6 +38,36 @@ class Account < ActiveRecord::Base
 
   def guest?
     !persisted?
+  end
+
+  def logged_in?
+    !guest?
+  end
+
+  def fingers
+    # TODO: fix the n+1 problem here
+    auto_fingers.select { |af| fingering_for(af).viewed_at < af.plan.updated_at }
+  end
+
+  def fingering_for(other)
+    auto_finger_relations.where { |rel| rel.fingered_id == other.id }.first
+  end
+
+  def finger(other)
+    auto_fingers << other
+  end
+
+  def finger!(other)
+    finger(other)
+    save
+  end
+
+  def ping(other)
+    return if guest?
+    fingering = fingering_for(other)
+    return unless fingering.present?
+
+    fingering.update_attributes viewed_at: Time.now
   end
 
 private

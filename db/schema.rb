@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110818011202) do
+ActiveRecord::Schema.define(:version => 20110819005038) do
 
   create_table "accounts", :force => true do |t|
     t.string   "login",            :null => false
@@ -22,6 +22,16 @@ ActiveRecord::Schema.define(:version => 20110818011202) do
   end
 
   add_index "accounts", ["login"], :name => "index_accounts_on_login", :unique => true
+
+  create_table "auto_fingers", :force => true do |t|
+    t.integer  "account_id"
+    t.integer  "fingered_id"
+    t.datetime "viewed_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "auto_fingers", ["account_id", "fingered_id"], :name => "index_auto_fingers_on_account_id_and_fingered_id", :unique => true
 
   create_table "plans", :force => true do |t|
     t.text     "contents"

@@ -5,6 +5,8 @@ class PlansController < ApplicationController
   include AuthenticationHelper
 
   def show
+    current_account.ping(@account)
+
     title_components << "#{@account.login}'s Plan"
   end
 

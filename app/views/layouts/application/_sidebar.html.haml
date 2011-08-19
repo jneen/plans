@@ -1,0 +1,7 @@
+%section#sidebar
+  - unless current_account.guest?
+    %h1#autofingers autofinger
+    %ul
+      - current_account.fingers.each do |finger|
+        %li
+          %a{href: plan_path(finger.login)} @#{finger.login}
