@@ -8,3 +8,9 @@
 #   inflect.irregular 'person', 'people'
 #   inflect.uncountable %w( fish sheep )
 # end
+
+ActiveSupport::Inflector.inflections do |inflect|
+  # the Inflector was inexplicably singularizing "loves"
+  # to "lofe", which afaik is only defined on UrbanDictionary
+  inflect.irregular 'love', 'loves'
+end

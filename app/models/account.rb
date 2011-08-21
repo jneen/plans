@@ -1,6 +1,7 @@
 require 'digest'
 
 class Account < ActiveRecord::Base
+  include Planlove::AccountExtension
   has_one :plan
 
   has_many :auto_finger_relations, :class_name => 'AutoFinger'
