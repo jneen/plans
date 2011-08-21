@@ -4,16 +4,10 @@ class Plan < ActiveRecord::Base
   belongs_to :account
   validates_presence_of :contents
   validates_presence_of :html
-  validates_presence_of :account_id
+  validates_presence_of :account
 
   def html
     self[:html].html_safe
-  end
-
-  def to_html
-    return '' if contents.nil?
-
-    (@to_html ||= markdown.render(contents)).dup.html_safe
   end
 
 private
