@@ -2,8 +2,11 @@
   = stylesheet_link_tag 'plans/show'
 
 %h1 #{@account.login}'s plan
+%span#actions
 - if current_account == @account
-  %a#edit_link{href: edit_plan_path(@account.login)} Edit
+  %a#edit{href: edit_plan_path(@account.login)} Edit
+- else
+  %a#finger{href: finger_plan_path(@account.login)} Finger @#{@account.login}
 
 %article#plan
   #contents= @account.plan.html

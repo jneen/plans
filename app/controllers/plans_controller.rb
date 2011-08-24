@@ -20,6 +20,21 @@ class PlansController < ApplicationController
     redirect_to plan_path(@account.login)
   end
 
+  def finger
+    return if current_account == @account
+
+    if current_account.auto_fingers.include? @account
+      flash[:notice] = <<-notice.squish
+        @#{@account.login} is already on your autofinger list.
+      notice
+    else
+      current_account.auto_fingers << @account
+      flash[:notice] = "@#{@account.login} has been added to your autofinger list"
+    end
+
+    redirect_to plan_path(@account.login)
+  end
+
 private
   def restrict_to_registered
     if current_account.guest?

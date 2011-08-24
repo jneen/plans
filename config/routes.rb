@@ -69,4 +69,5 @@ Plans::Application.routes.draw do
   get ':id/edit' => 'plans#edit', :as => :edit_plan
   put ':id' => 'plans#update', :as => :update_plan
   delete ':id' => 'plans#delete', :as => :delete_plan
+  get ':id/finger' => 'plans#finger', :as => :finger_plan
 end
