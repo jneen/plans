@@ -8,11 +8,8 @@
 
 section
   border: 1px solid red
-  width: 900px - 80px - 200px - 20px
+  width: 600px - 2px
   float: left
-  margin: 20px - 2px
-  margin-left: 0
-  padding: 10px
 
 article
   float: left
