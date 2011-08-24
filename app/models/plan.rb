@@ -2,8 +2,6 @@ class Plan < ActiveRecord::Base
   include Planlove::PlanExtension
 
   belongs_to :account
-  validates_presence_of :contents
-  validates_presence_of :html
   validates_presence_of :account
 
   def html
