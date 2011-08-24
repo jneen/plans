@@ -1,4 +1,7 @@
 %header
+  - if flash[:notice].present?
+    #notice= flash[:notice]
+
   #welcome
     - if current_account.guest?
       %a{href: new_session_path} Log in
