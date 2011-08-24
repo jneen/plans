@@ -2,13 +2,9 @@ require 'digest'
 
 class Account < ActiveRecord::Base
   include Planlove::AccountExtension
-  has_one :plan
+  include AutoFinger::AccountExtension
 
-  has_many :auto_finger_relations, :class_name => 'AutoFinger'
-  has_many :auto_fingers,
-    :through => :auto_finger_relations,
-    :class_name => 'Account',
-    :source => :fingered
+  has_one :plan
 
   def self.[](name)
     find_by_login(name.to_s)
@@ -31,45 +27,12 @@ class Account < ActiveRecord::Base
     ''
   end
 
-  alias plan_without_default plan 
-  def plan
-    return plan_without_default if plan_without_default.present?
-    self.plan = Plan.new(account: self)
-  end
-
   def guest?
     !persisted?
   end
 
   def logged_in?
     !guest?
-  end
-
-  def fingers
-    auto_fingers
-      .joins(:plan)
-      .where { plans.updated_at > auto_fingers.viewed_at }
-  end
-
-  def fingering_for(other)
-    auto_finger_relations.where { |rel| rel.fingered_id == other.id }.first
-  end
-
-  def finger(other)
-    auto_fingers << other
-  end
-
-  def finger!(other)
-    finger(other)
-    save
-  end
-
-  def ping(other)
-    return if guest?
-    fingering = fingering_for(other)
-    return unless fingering.present?
-
-    fingering.update_attributes viewed_at: Time.now
   end
 
 private
@@ -83,5 +46,10 @@ private
 
   def generate_salt(bytes=64)
     ActiveSupport::SecureRandom.base64(bytes)
+  end
+
+  before_validation :setup, :on => :create
+  def setup
+    self.plan ||= build_plan
   end
 end
