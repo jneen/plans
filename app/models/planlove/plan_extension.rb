@@ -3,14 +3,14 @@ class Planlove
     extend ActiveSupport::Concern
 
     included do
-      has_many :planloves
+      has_many :planloves, :dependent => :destroy
       has_many :loved_accounts, :through => :planloves, :class_name => :Account
     end
 
     def planlove!(doc)
       planloves = Hash.new(0)
 
-      doc.gsub!(/(^|\s)@(\w+)/) do
+      doc.gsub!(/(^|\W)@(\w+)/) do
         account_name = $2
         account = Account.find_by_login(account_name)
         if account.present?

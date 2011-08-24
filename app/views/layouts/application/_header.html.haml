@@ -6,6 +6,5 @@
     - if current_account.guest?
       %a{href: new_session_path} Log in
     - else
-      Welcome back, 
-      %a{href: plan_path(current_account.login)}= current_account.login
-      %a{href: url_for(controller: :sessions, action: :clear)} Logout
+      Welcome back, #{plan_link(current_account)}!
+      %a{href: url_for(controller: :sessions, action: :clear)} (Logout)

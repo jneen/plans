@@ -1,7 +1,11 @@
 %aside#sidebar
   - unless current_account.guest?
-    %h1#autofingers autofinger
+    %h1#autofinger autofinger
     %ul
       - current_account.fingers.each do |finger|
-        %li
-          %a{href: plan_path(finger.login)} @#{finger.login}
+        %li= plan_link(finger)
+    %h1#planlove planlove
+    -#TODO: move this out of the view
+    %ul
+      - current_account.recent_lovers.each do |lover|
+        %li= plan_link(lover.account)
