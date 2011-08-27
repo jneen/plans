@@ -1,12 +1,12 @@
 - content_for :head do
   = stylesheet_link_tag 'plans/show'
 
-%h1 #{@account.login}'s plan
-#actions
-  - if current_account == @account
-    %a#edit{href: edit_plan_path(@account.login)} Edit
-  - else
-    %a#finger{href: finger_plan_path(@account.login)} Finger @#{@account.login}
 
 %article#plan
-  #contents= @account.plan.html
+  %h1 #{@account.login}'s plan
+  .actions
+    - if current_account == @account
+      %a.edit{href: edit_plan_path(@account.login)} Edit
+    - else
+      %a.finger{href: finger_plan_path(@account.login)} Finger @#{@account.login}
+  .contents= @account.plan.html

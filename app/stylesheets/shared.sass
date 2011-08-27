@@ -1,4 +1,4 @@
-// @import compass/reset
+@import compass/reset
 @import shared/header
 @import shared/sidebar
 
@@ -7,7 +7,7 @@
   margin: 0 auto
 
 section
-  border: 1px solid red
+  // border: 1px solid red
   width: 900px - 80px - 200px - 20px
   float: left
   margin: 20px - 2px
@@ -16,3 +16,10 @@ section
 
 article
   float: left
+
+a
+  text-decoration: none
+  font-weight: bold
+  color: black
+  &:hover
+    text-decoration: underline
