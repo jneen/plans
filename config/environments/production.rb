@@ -1,3 +1,7 @@
+# hack to make the shared db work :(
+# I don't know why this works, but it does.
+ENV['DATABASE_URL'] = ENV['SHARED_DATABASE_URL']
+
 Plans::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 

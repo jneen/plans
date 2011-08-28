@@ -27,12 +27,3 @@ development:
 test:
   <<: *localdb
   database: plans_test
-
-<% uri = URI.parse(ENV['SHARED_DATABASE_URL'].to_s) %>
-production:
-  adapter: postgresql
-  encoding: unicode
-  host: <%= uri.host %>
-  database: <%= uri.path[1..-1] %>
-  username: <%= uri.user %>
-  password: <%= uri.password %>
