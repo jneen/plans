@@ -17,6 +17,6 @@ private
   end
 
   def markdown
-    @markdown ||= Redcarpet::Markdown.new(TextFilter.new)
+    @markdown ||= Redcarpet::Markdown.new(TextFilter.new(:hard_wrap => true))
   end
 end
