@@ -10,7 +10,7 @@ task :deploy => ['sass:update'] do
 
   puts '> checking for a diff in the sass files...'
   git 'add public/stylesheets/'
-  if git 'diff --cached'
+  if git 'diff --cached --exit-code'
     puts '> (no diff found)'
   else
     puts '> committing...'
