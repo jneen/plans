@@ -8,7 +8,8 @@ class SessionsController < ApplicationController
     if account && account.correct_password?(params[:password])
       login_and_redirect(account)
     else
-      redirect_to :new
+      flash[:notice] = 'Incorrect username or password'
+      redirect_to :action => :new
     end
   end
 
