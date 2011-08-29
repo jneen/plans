@@ -1,3 +1,8 @@
+- content_for :head do
+  = javascript_include_tag 'sha256'
+  = javascript_include_tag 'sessions/new'
+  = stylesheet_link_tag 'sessions/new'
+
 %section#login
   %h1 Please log in to use plans
   = form_tag controller: :sessions, action: :create do
@@ -8,5 +13,9 @@
       = label_tag :password, 'Password:'
       = password_field_tag :password
       %br/
+
+      #robohash
+        A unique robot we generated from your password:
+        %img(src='http://robohash.org/.png?size=50x50')
 
       = submit_tag 'Log in'
