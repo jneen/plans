@@ -9,11 +9,11 @@ task :deploy => ['sass:update'] do
   git 'checkout production'
 
   puts '> checking for a diff in the sass files...'
-  if git 'diff public/stylesheets/'
+  git 'add public/stylesheets/'
+  if git 'diff --cached'
     puts '> (no diff found)'
   else
     puts '> committing...'
-    git %(add public/stylesheets/)
     git %(commit -m 'update generated stylesheets')
   end
 
