@@ -11,6 +11,7 @@ class Account < ActiveRecord::Base
   end
 
   def password=(pw)
+    self.temporary_password = false
     self.crypted_password = hash_password(pw)
   end
 
@@ -20,6 +21,14 @@ class Account < ActiveRecord::Base
 
   def correct_password?(pw)
     self.crypted_password == hash_password(pw)
+  end
+
+  def temporary_password!
+    pw = ActiveSupport::SecureRandom.urlsafe_base64(4)
+    self.password = pw
+    self.temporary_password = true
+
+    return pw
   end
 
   # stub, for form helpers
