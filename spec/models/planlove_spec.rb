@@ -2,11 +2,14 @@ require 'spec_helper'
 
 describe Planlove do
   let(:man) { build Account }
-  let(:plan) { build Plan }
+  let(:other_man) { build Account }
+  let(:plan) { other_man.plan }
 
-  before(:each) do
+  before do
+    Account.destroy_all
+    Plan.destroy_all
     man.save!
-    plan.save!
+    other_man.save!
   end
 
   it 'calculates planlove on validating a plan' do
@@ -16,5 +19,8 @@ describe Planlove do
     plan.save!
 
     plan.planloves.map(&:account).should == [man]
+  end
+
+  after do
   end
 end
