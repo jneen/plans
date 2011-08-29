@@ -1,4 +1,8 @@
 module AuthenticationHelper
+  def require_login
+    redirect_to new_session_path if current_account.guest?
+  end
+
   def current_account
     return Account.new if session[:account].blank?
 
