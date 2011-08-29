@@ -22,6 +22,6 @@ group :development, :test do
   gem 'rspec', '~> 2'
   gem 'rspec-rails'
   gem 'autotest'
-  gem 'autotest-inotify'
+  gem 'autotest-inotify', :require => 'autotest/inotify'
   gem 'ffaker'
 end

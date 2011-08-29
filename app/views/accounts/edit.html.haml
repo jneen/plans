@@ -1,0 +1,14 @@
+%section#edit_account
+  = form_for @account, :action => :edit do |f|
+    %fieldset
+      %h2 Update Your Password
+      = label_tag :password, 'Your current password'
+      = f.password_field :password
+      %br/
+      = label_tag :new_password, 'Your new password'
+      = password_field_tag :new_password
+      %br/
+      = label_tag :confirm_password, 'Type your new password again'
+      = password_field_tag :confirm_password
+      %br/
+      = f.submit

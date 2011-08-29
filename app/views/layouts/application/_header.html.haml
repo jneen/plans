@@ -3,8 +3,7 @@
     #notice= flash[:notice]
 
   #welcome
-    - if current_account.guest?
-      %a{href: new_session_path} Log in
-    - else
+    - if current_account.logged_in?
       Welcome back, #{plan_link(current_account)}.
       %a{href: url_for(controller: :sessions, action: :clear)} (Logout)
+      %a{href: edit_account_path(current_account.login)} (Edit Account)

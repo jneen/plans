@@ -27,5 +27,18 @@ describe Account do
     it 'invalidates a wrong password' do
       account.should_not be_correct_password('wrong password')
     end
+
+    it 'should not have the temporary_password flag' do
+      account.should_not be_temporary_password
+    end
+  end
+
+  context 'temporary password' do
+    it 'sets a temporary password' do
+      pw = account.temporary_password!
+      account.crypted_password.should_not be_blank
+      account.should be_temporary_password
+      account.should be_correct_password(pw)
+    end
   end
 end
