@@ -6,3 +6,6 @@ tmp/
 
 # sass
 public/stylesheets
+
+# rvm
+.rvmrc
