@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110829010017) do
+ActiveRecord::Schema.define(:version => 20110830000123) do
 
   create_table "accounts", :force => true do |t|
     t.string   "login",                                 :null => false
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20110829010017) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "temporary_password", :default => false
+    t.string   "name"
   end
 
   add_index "accounts", ["login"], :name => "index_accounts_on_login", :unique => true
