@@ -19,4 +19,7 @@ task :deploy => ['sass:update'] do
 
   puts '> pushing to heroku...'
   git 'push heroku production:master'
+
+  puts '> switching back to previous branch'
+  git 'checkout -'
 end
