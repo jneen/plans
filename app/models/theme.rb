@@ -3,7 +3,7 @@ module Theme
     case thing
     when Theme
       thing
-    when String
+    else
       create(thing)
     end
   end
