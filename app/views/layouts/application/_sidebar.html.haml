@@ -1,5 +1,7 @@
 %aside#sidebar
   - unless current_account.guest?
+    %a#all_plans(href=all_plans_path) See all plans
+
     %h1#autofinger autofinger
     - fingers = current_account.fingers
     %ul

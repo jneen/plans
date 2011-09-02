@@ -5,6 +5,9 @@ class PlansController < ApplicationController
 
   include AuthenticationHelper
 
+  def index
+  end
+
   def show
     current_account.ping(@account)
 

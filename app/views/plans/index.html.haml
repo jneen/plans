@@ -1,0 +1,7 @@
+- content_for :head do
+  = stylesheet_link_tag 'plans/index'
+%section#all-plans
+  %h1 All plans
+  %ul
+    - Account.all.each do |account|
+      %li= account.link
