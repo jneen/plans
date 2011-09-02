@@ -5,6 +5,7 @@ class AccountsController < ApplicationController
 
   def edit
     @account = current_account
+    title_components << "Edit #{@account.login}'s account"
   end
 
   def update
