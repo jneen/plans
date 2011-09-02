@@ -3,6 +3,7 @@ require 'digest'
 class Account < ActiveRecord::Base
   include Planlove::AccountExtension
   include AutoFinger::AccountExtension
+  include Theme::AccountExtension
 
   has_one :plan
 

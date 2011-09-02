@@ -1,0 +1,31 @@
+header {
+  margin: 4px;
+  padding: 4px;
+}
+
+aside {
+  margin: 18px;
+  float: left;
+  width: 200px;
+}
+
+aside ul {
+  margin-left: 20px;
+}
+
+#container {
+  width: 900px;
+  margin: 0 auto;
+}
+
+section {
+  width: 600px;
+  float: left;
+  margin: 18px;
+  margin-left: 0;
+  padding: 10px;
+}
+
+article {
+  float: left;
+}

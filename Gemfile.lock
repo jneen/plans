@@ -44,17 +44,11 @@ GEM
       autotest (>= 4.2.4)
       rb-inotify
     builder (2.1.2)
-    chunky_png (1.1.2)
-    compass (0.11.0)
-      chunky_png (~> 1.1.1)
-      fssm (>= 0.2.7)
-      sass (>= 3.1.0.alpha.249)
     diff-lcs (1.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
     ffaker (1.8.0)
     ffi (1.0.9)
-    fssm (0.2.7)
     haml (3.1.2)
     heroku (2.4.2)
       launchy (>= 0.3.2)
@@ -112,7 +106,6 @@ GEM
       rspec (~> 2.6.0)
     sanitize (2.0.3)
       nokogiri (>= 1.4.4, < 1.6)
-    sass (3.2.0.alpha.11)
     squeel (0.8.7)
       activerecord (~> 3.0)
       activesupport (~> 3.0)
@@ -129,7 +122,6 @@ PLATFORMS
 DEPENDENCIES
   autotest
   autotest-inotify
-  compass (= 0.11.0)
   ffaker
   haml
   heroku (~> 2.4)

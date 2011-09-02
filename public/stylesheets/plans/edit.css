@@ -1,0 +1,9 @@
+#edit textarea {
+  display: block;
+  width: 100%;
+}
+
+#edit input[type=submit] {
+  font-family: "Monaco", "Bitstream Vera Sans Mono", monospace;
+  float: right;
+}
