@@ -1,0 +1,42 @@
+body {
+  background-color: #AAD9FF;
+}
+
+a {
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline
+}
+
+#notice {
+  border: 1px solid #FF5A31;
+  background-color: #FF947A;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+#plan {
+  line-height: 1.3em;
+}
+
+#sidebar, #content, header {
+  border: 8px solid black;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: white;
+}
+
+#sidebar {
+  min-height: 500px;
+  width: 150px;
+}
+
+h1 {
+  font-family: 'Verdana';
+  text-transform: uppercase;
+  font-size: 0.8em;
+}
