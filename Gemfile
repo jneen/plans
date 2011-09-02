@@ -8,7 +8,6 @@ gem 'squeel'
 
 # views
 gem 'haml'
-gem 'compass', '= 0.11.0'
 
 # markdown syntax
 gem 'redcarpet', :git => 'git://github.com/tanoku/redcarpet',
