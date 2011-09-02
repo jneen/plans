@@ -8,7 +8,7 @@
       - fingers.each do |finger|
         %li= finger.link
       - if fingers.empty?
-        %li (None)
+        %li.none (None)
 
     %h1#planlove planlove
     - lovers = current_account.recent_lovers
@@ -16,4 +16,4 @@
       - lovers.each do |lover|
         %li= lover.account.link
       - if lovers.empty?
-        %li (None)
+        %li.none (None)
