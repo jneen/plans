@@ -15,6 +15,9 @@
 
   %body
     #container
+      - if flash[:notice].present?
+        #notice= flash[:notice]
+
       = render partial: 'layouts/application/header'
       = render partial: 'layouts/application/sidebar'
       %section#content= yield

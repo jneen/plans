@@ -1,7 +1,4 @@
 %header
-  - if flash[:notice].present?
-    #notice= flash[:notice]
-
   #welcome
     - if current_account.logged_in?
       Welcome back, #{plan_link(current_account)}.
