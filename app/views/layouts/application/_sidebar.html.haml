@@ -1,11 +1,17 @@
 %aside#sidebar
   - unless current_account.guest?
     %h1#autofinger autofinger
+    - fingers = current_account.fingers
     %ul
-      - current_account.fingers.each do |finger|
-        %li= plan_link(finger)
+      - fingers.each do |finger|
+        %li= finger.link
+      - if fingers.empty?
+        %li (None)
+
     %h1#planlove planlove
-    -#TODO: move this out of the view
+    - lovers = current_account.recent_lovers
     %ul
-      - current_account.recent_lovers.each do |lover|
-        %li= plan_link(lover.account)
+      - lovers.each do |lover|
+        %li= lover.account.link
+      - if lovers.empty?
+        %li (None)

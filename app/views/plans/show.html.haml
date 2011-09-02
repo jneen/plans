@@ -8,5 +8,5 @@
     - if current_account == @account
       %a.edit{href: edit_plan_path(@account.login)} Edit
     - else
-      %a.finger{href: finger_plan_path(@account.login)} Finger @#{@account.login}
+      %a.finger{href: finger_plan_path(@account.login)} Finger #{@account.handle}
   .contents= @account.plan.html

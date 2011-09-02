@@ -13,5 +13,9 @@ class Planlove
     def recent_lovers
       planlovers.includes(:account).order { updated_at.desc }
     end
+
+    def link
+      %<<a href="/#{login}" class="planlove">#{handle}</a>>.html_safe
+    end
   end
 end

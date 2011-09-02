@@ -24,6 +24,10 @@ class Account < ActiveRecord::Base
     self.crypted_password == hash_password(pw)
   end
 
+  def handle
+    "@#{login}"
+  end
+
   def temporary_password!
     pw = ActiveSupport::SecureRandom.urlsafe_base64(4)
     self.password = pw

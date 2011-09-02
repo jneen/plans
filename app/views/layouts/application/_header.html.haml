@@ -1,6 +1,6 @@
 %header
   #welcome
     - if current_account.logged_in?
-      Welcome back, #{plan_link(current_account)}.
+      Welcome back, #{current_account.link}
       %a{href: url_for(controller: :sessions, action: :clear)} (Logout)
       %a{href: edit_account_path(current_account.login)} (Edit Account)
