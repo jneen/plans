@@ -35,6 +35,23 @@ class PlansController < ApplicationController
     redirect_to plan_path(@account.login)
   end
 
+  def unfinger
+    return if current_account == @account
+
+    if current_account.auto_fingers.include? @account
+      current_account.auto_fingers.delete(@account)
+      flash[:notice] = <<-notice.squish
+        @#{@account.login} has been removed from your autofinger list.
+      notice
+    else
+      flash[:notice] = <<-notice.squish
+        #{@account.handle} is not on your autofinger list.
+      notice
+    end
+
+    redirect_to plan_path(@account.login)
+  end
+
 private
   def restrict_to_registered
     if current_account.guest?

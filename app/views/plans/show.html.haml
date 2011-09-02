@@ -7,6 +7,10 @@
   .actions
     - if current_account == @account
       %a.edit{href: edit_plan_path(@account.login)} Edit
+    - elsif current_account.auto_fingers.include? @account
+      %a.unfinger{href: unfinger_plan_path(@account.login)}
+        Unfinger #{@account.handle}
     - else
-      %a.finger{href: finger_plan_path(@account.login)} Finger #{@account.handle}
+      %a.finger{href: finger_plan_path(@account.login)}
+        Finger #{@account.handle}
   .contents= @account.plan.html

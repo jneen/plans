@@ -69,5 +69,8 @@ Plans::Application.routes.draw do
   get ':id/edit' => 'plans#edit', :as => :edit_plan
   put ':id' => 'plans#update', :as => :update_plan
   delete ':id' => 'plans#delete', :as => :delete_plan
+
+  #TODO: these shouldn't be GETs
   get ':id/finger' => 'plans#finger', :as => :finger_plan
+  get ':id/unfinger' => 'plans#unfinger', :as => :unfinger_plan
 end
