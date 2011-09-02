@@ -1,11 +1,10 @@
-/* line 1, ../../../app/stylesheets/shared/sidebar.sass */
 aside {
   margin: 18px;
   float: left;
   min-height: 600px;
   width: 200px;
 }
-/* line 11, ../../../app/stylesheets/shared/sidebar.sass */
+
 aside ul {
   margin-left: 20px;
 }
