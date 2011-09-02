@@ -43,10 +43,13 @@ body {
 /*********
  * uppercase sans headings with a thick black bottom border
  */
-h1 {
+h1, a#all_plans {
   font-family: 'Verdana';
   text-transform: uppercase;
   font-size: 0.8em;
+}
+
+h1 {
   border-bottom: 4px solid black;
 }
 
