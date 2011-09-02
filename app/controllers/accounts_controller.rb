@@ -21,7 +21,8 @@ class AccountsController < ApplicationController
     end
 
     current_account.update_attributes(
-      :password => password_attrs[:new_password]
+      :password => password_attrs[:new_password],
+      :theme => decide_theme(params)
     )
 
     if current_account.save
@@ -41,5 +42,13 @@ private
     return false unless current_account.correct_password?(attrs[:password])
 
     return attrs[:new_password] == attrs[:confirm_password]
+  end
+
+  def decide_theme(p={})
+    if p[:theme] == 'other'
+      p[:theme_other]
+    else
+      p[:theme]
+    end
   end
 end

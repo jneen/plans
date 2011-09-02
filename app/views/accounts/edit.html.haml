@@ -1,7 +1,22 @@
 %section#edit_account
   = form_for @account, :action => :edit do |f|
-    %fieldset
-      %h2 Update Your Password
+    = field_set_tag 'Change your theme' do
+      - current_theme = current_account.theme
+
+      - Theme.local.each do |theme|
+        = label_tag do
+          = radio_button_tag :theme, theme.name, current_theme == theme
+          = theme.pretty_name
+          %br/
+
+      = label_tag do
+        = radio_button_tag :theme, 'other', current_theme.external?
+        = label_tag do
+          Custom Stylesheet URL:
+          = text_field_tag :theme_other, (current_theme.url if current_theme.external?)
+
+
+    = field_set_tag 'Change your password' do
       = label_tag :password, 'Your current password'
       = f.password_field :password
       %br/

@@ -1,10 +1,25 @@
 module Theme
+  def self.wrap(thing)
+    case thing
+    when Theme
+      thing
+    when String
+      create(thing)
+    end
+  end
+
   def self.create(name)
     name ||= 'default'
 
     klass = (name !~ /\W/) ? LocalTheme : ExternalTheme
 
     klass.new(name)
+  end
+
+  def self.local
+    DIR.entries.map(&:to_s).grep(/\.css$/).map { |entry|
+      create(entry.chomp('.css'))
+    }
   end
 
   DIR = Rails.root.join('public/stylesheets/themes')
@@ -29,6 +44,10 @@ module Theme
 
     def pretty_name
       raise "plz define pretty_name"
+    end
+
+    def ==(other)
+      name == other.name
     end
   end
 
