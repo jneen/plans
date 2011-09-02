@@ -1,3 +1,7 @@
 #plan .actions {
   float: right;
 }
+
+#plan {
+  width: 100%;
+}
