@@ -4,4 +4,4 @@
   %h1 All plans
   %ul
     - Account.all.each do |account|
-      %li= account.link
+      %li #{account.link}: #{account.name}
