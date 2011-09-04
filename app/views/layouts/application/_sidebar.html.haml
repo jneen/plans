@@ -3,11 +3,17 @@
     %nav#quicklinks
       %ul
         %li
-          %a.all_plans{href:all_plans_path} See All Plans
+          %a.all_plans{href:all_plans_path}
+            See All Plans
         %li
-          %a.logout{href:edit_account_path(current_account.login)} Edit Account
+          %a.edit_plan{href:edit_plan_path(current_account.login)}
+            Edit Plan
         %li
-          %a.logout{href:clear_sessions_path} Logout
+          %a.edit_account{href:edit_account_path(current_account.login)}
+            Edit Account
+        %li
+          %a.logout{href:clear_sessions_path}
+            Logout
 
     %nav#notifications
       %section#autofinger
