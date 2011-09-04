@@ -1,19 +1,24 @@
 %aside#sidebar
-  - unless current_account.guest?
-    %a#all_plans(href=all_plans_path) See all plans
+  - if current_account.logged_in?
+    %nav#quicklinks
+      %ul
+        %li
+          %a.all_plans{href:all_plans_path} See All Plans
+        %li
+          %a.logout{href:edit_account_path(current_account.login)} Edit Account
+        %li
+          %a.logout{href:clear_sessions_path} Logout
 
-    %h1#autofinger autofinger
-    - fingers = current_account.fingers
-    %ul
-      - fingers.each do |finger|
-        %li= finger.link
-      - if fingers.empty?
-        %li.none (None)
-
-    %h1#planlove planlove
-    - lovers = current_account.recent_lovers
-    %ul
-      - lovers.each do |lover|
-        %li= lover.account.link
-      - if lovers.empty?
-        %li.none (None)
+    %nav#notifications
+      %section#autofinger
+        %h1 Autofinger
+        - fingers = current_account.fingers
+        %ul
+          - fingers.each do |finger|
+            %li= finger.link
+      %section#planlove
+        %h1 Planlove
+        - lovers = current_account.recent_lovers
+        %ul
+          - lovers.each do |lover|
+            %li= lover.account.link

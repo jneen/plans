@@ -19,7 +19,7 @@ body {
 /*********
  * round white-filled boxes
  */
-#sidebar, #content, header {
+#sidebar, #content, #welcome {
   border: 8px solid black;
   padding: 10px;
   border-radius: 10px;
@@ -34,7 +34,7 @@ body {
   width: 150px;
 }
 
-#sidebar ul {
+#notifications ul {
   list-style-type: none;
   padding-left: 0;
   margin-left: 10px;
@@ -43,10 +43,17 @@ body {
 /*********
  * uppercase sans headings with a thick black bottom border
  */
-h1, a#all_plans {
+h1, #quicklinks a {
   font-family: 'Verdana';
   text-transform: uppercase;
   font-size: 0.8em;
+}
+
+#quicklinks ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  margin-top: 5px;
 }
 
 h1 {
