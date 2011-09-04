@@ -9,22 +9,28 @@ class AccountsController < ApplicationController
   end
 
   def update
+    attrs = {}
+
     password_attrs = {
       :password => params[:account][:password],
       :new_password => params[:new_password],
       :confirm_password => params[:confirm_password]
     }
 
-    unless check_password_confirmation(current_account, password_attrs)
+    if (
+      params[:new_password].present? &&
+      check_password_confirmation(current_account, password_attrs)
+    ) then
+      attrs[:password] = params[:new_password]
+    elsif params[:new_password].present?
       flash[:notice] = 'Passwords did not match each other or our records.'
       redirect_to :action => :edit
       return
     end
 
-    current_account.update_attributes(
-      :password => password_attrs[:new_password],
-      :theme => decide_theme(params)
-    )
+    attrs[:theme] = decide_theme(params)
+
+    current_account.update_attributes(attrs)
 
     if current_account.save
       flash[:notice] = 'Successfully updated account'
