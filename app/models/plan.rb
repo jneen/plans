@@ -16,7 +16,18 @@ private
     self.html = rendered
   end
 
-  def markdown
+  def self.markdown
     @markdown ||= Redcarpet::Markdown.new(TextFilter.new(:hard_wrap => true))
+  end
+
+  def markdown
+    self.class.markdown
+  end
+
+  def self.filter!(doc)
+    rendered = markdown.render(doc)
+    planlove_filter!(rendered)
+
+    rendered.html_safe
   end
 end

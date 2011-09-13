@@ -7,23 +7,30 @@ class Planlove
       has_many :loved_accounts, :through => :planloves, :class_name => :Account
     end
 
-    def planlove!(doc)
-      planloves = Hash.new(0)
+    module ClassMethods
+      def planlove_filter!(doc)
+        planloves = Hash.new(0)
 
-      doc.gsub!(/(^|\W)@(\w+)/) do
-        account_name = $2
-        account = Account.find_by_login(account_name)
-        if account.present?
-          planloves[account.id] += 1
+        doc.gsub!(/(^|\W)@(\w+)/) do
+          account_name = $2
+          if $1 == "\\" or (account = Account.find_by_login(account_name)).blank?
+            $&
+          else
+            planloves[account.id] += 1
 
-          %[#{$1}<a href="/#{account_name}" class="planlove">@#{account_name}</a>]
-        else
-          $&
+            %<#{$1}<a href="/#{account_name}" class="planlove">@#{account_name}</a>>
+          end
         end
-      end
 
-      # escape @ signs with \@
-      doc.gsub!(/\\@/,'@')
+        # escape @ signs with \@
+        doc.gsub!(/\\@/,'@')
+
+        planloves
+      end
+    end
+
+    def planlove!(doc)
+      planloves = self.class.planlove_filter!(doc)
 
       self.planloves = planloves.map do |account_id, count|
         Planlove.new(
