@@ -66,6 +66,7 @@ Plans::Application.routes.draw do
   root :to => 'home#index'
 
   get '/all' => 'plans#index', :as => :all_plans
+  get '/help' => 'help#index', :as => :help
 
   get ':id' => 'plans#show', :as => :plan
   get ':id/edit' => 'plans#edit', :as => :edit_plan

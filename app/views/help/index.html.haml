@@ -1,0 +1,4 @@
+%section#help
+  %h1 Help
+  - doc = File.read(Rails.root.join('app/documents/help.md'))
+  ~ Plan.filter!(doc)
