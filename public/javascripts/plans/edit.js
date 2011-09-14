@@ -35,6 +35,7 @@ console.log('keyup', preview);
 
 
     textarea.keyup(keyup);
+    keyup();
   }
 
   $(document).ready(init);
