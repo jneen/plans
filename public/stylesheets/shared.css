@@ -29,3 +29,11 @@ aside ul {
 article {
   float: left;
 }
+
+/**
+ * this allows <pre> tags to retain whitespace,
+ * but makes the lines wrap, unlike the default.
+ */
+pre {
+  white-space: pre-line;
+}

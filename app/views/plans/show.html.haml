@@ -13,4 +13,4 @@
     - else
       %a.finger{href: finger_plan_path(@account.login)}
         Finger #{@account.handle}
-  .contents= @account.plan.html
+  .contents~ @account.plan.html
