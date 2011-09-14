@@ -1,7 +1,7 @@
 class PlansController < ApplicationController
   before_filter :find_account
   before_filter :restrict_to_registered
-  before_filter :restrict_to_owner, :only => [:edit, :update]
+  before_filter :restrict_to_owner, :only => [:edit, :update, :preview]
 
   include AuthenticationHelper
 
@@ -53,6 +53,12 @@ class PlansController < ApplicationController
     end
 
     redirect_to plan_path(@account.login)
+  end
+
+  # ajax action for the fancy preview
+  def preview
+    contents = Plan.filter!(params[:contents])
+    render :text => contents, :content_type => 'text/html'
   end
 
 private

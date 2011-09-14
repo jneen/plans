@@ -1,5 +1,7 @@
 - content_for :head do
   = stylesheet_link_tag 'plans/edit'
+  = javascript_include_tag 'plans/edit'
+
 %section#edit
   %h1 Editing #{@account.login}'s plan.
 
