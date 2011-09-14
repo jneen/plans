@@ -28,7 +28,7 @@ console.log('keyup', preview);
     previewContents = $('<div class="contents"></div>')
 
     $('<div id="preview"></div>')
-      .prepend('<h2>Preview</h2>')
+      .prepend('<h1>Preview</h1>')
       .append(previewContents)
       .insertAfter(textarea)
     ;
