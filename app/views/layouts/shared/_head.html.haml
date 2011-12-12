@@ -1,0 +1,11 @@
+= title_tag
+= stylesheet_link_tag 'shared'
+= stylesheet_link_tag current_account.theme.url
+= csrf_meta_tag
+= canonical_link_tag
+
+= javascript_include_tag 'http://cdnjs.cloudflare.com/ajax/libs/jquery/1.6.2/jquery.min.js'
+= javascript_include_tag 'application'
+
+/ begin yielded content
+= yield :head
