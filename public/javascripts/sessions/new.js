@@ -4,7 +4,7 @@ Plans.Robohash = (function($) {
   }
 
   function robohashUrl(text) {
-    return 'http://robohash.org/'+text+'.png?size=50x50';
+    return '//robohash.org/'+text+'.png?size=50x50';
   }
 
   function init() {
