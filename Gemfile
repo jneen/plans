@@ -24,3 +24,7 @@ group :development, :test do
   gem 'autotest-inotify', :require => 'autotest/inotify'
   gem 'ffaker'
 end
+
+group :development do
+  gem 'unicorn'
+end

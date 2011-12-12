@@ -55,6 +55,7 @@ GEM
       rest-client (~> 1.6.1)
       term-ansicolor (~> 1.0.5)
     i18n (0.5.0)
+    kgio (2.6.0)
     launchy (2.0.5)
       addressable (~> 2.2.6)
     mail (2.2.19)
@@ -85,6 +86,7 @@ GEM
       rake (>= 0.8.7)
       rdoc (~> 3.4)
       thor (~> 0.14.4)
+    raindrops (0.8.0)
     rake (0.9.2)
     rb-inotify (0.8.6)
       ffi (>= 0.5.0)
@@ -115,6 +117,10 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.29)
+    unicorn (4.1.1)
+      kgio (~> 2.4)
+      rack
+      raindrops (~> 0.6)
 
 PLATFORMS
   ruby
@@ -132,3 +138,4 @@ DEPENDENCIES
   rspec-rails
   sanitize
   squeel
+  unicorn
