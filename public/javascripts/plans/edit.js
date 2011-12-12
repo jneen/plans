@@ -18,7 +18,6 @@ Plans.Edit = (function($) {
   }
 
   function keyup() {
-console.log('keyup', preview);
     processPlan(textarea.val(), updatePreview);
   }
 
