@@ -61,5 +61,5 @@ Your plan is filtered through a text-to-html converter called "[markdown][]", wh
 [orangutans]: http://www.google.com/search?q=orangutans
 
 Feel free to experiment however you want, there's no limit to how many times
-you can change your plan.  I may also add a fancy "preview" mode, which will
-require javascript to be enabled in your browser.
+you can change your plan.  You can also use the fancy "preview" beneath the
+edit box, which requires javascript to be enabled in your browser.
