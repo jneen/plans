@@ -6,13 +6,10 @@ class TextFilter < Redcarpet::Render::HTML
 
 private
   def sanitize_config
-    @sanitize_config ||= begin
-      config = Sanitize::Config::RELAXED.dup
+    @sanitize_config ||= Sanitize::Config::RELAXED.dup.tap do |config|
       config[:elements] = config[:elements].dup
 
       config[:elements] << 'hr'
-
-      config
     end
   end
 end
