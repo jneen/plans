@@ -5,7 +5,6 @@ shared: &shared
 localdb: &localdb
   <<: *shared
   username: plans
-  password: pl4ns
   pool: 5
 
 development:
