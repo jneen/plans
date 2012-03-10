@@ -7,7 +7,7 @@ class PlanView
       has_many :plan_views,
         :through => :plan_view_relations,
         :class_name => 'Account',
-        :source => :viewed_id
+        :source => :viewed
     end
 
     # This is quadratic in the number of users.
@@ -19,7 +19,9 @@ class PlanView
     end
 
     def plan_view_for(other)
-      plan_view_relations.where { |rel| rel.fingered_id == other.id }.find_or_create
+      plan_view_relations
+        .where { |rel| rel.viewed_id == other.id }
+        .first_or_create
     end
 
     def view(other)
