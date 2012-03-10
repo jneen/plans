@@ -16,12 +16,6 @@ and it would be transformed into this:
 
 After mentioning @jayferd, you will appear in his planlove list when he next logs in.
 
-## What is "finger"/"autofinger"?
-
-Your autofinger list is a convenient way to keep track of people whose plans you want to follow.  If you finger @barretta, for example, his name will appear in your autofinger list the next time he updates his plan, and will disappear when you view his plan.
-
-The list of people you have fingered is entirely private, and is not shared with anyone.  Feel free to finger/unfinger anyone as you please.
-
 ## Sweet!  How do I do fancy things with my plan?
 
 Your plan is filtered through a text-to-html converter called "[markdown][]", which enables you to do a lot of nifty things.  You can read the documentation on their site, but here are a couple of basic examples.

@@ -2,7 +2,7 @@ require 'digest'
 
 class Account < ActiveRecord::Base
   include Planlove::AccountExtension
-  include AutoFinger::AccountExtension
+  include PlanView::AccountExtension
   include Theme::AccountExtension
 
   has_one :plan

@@ -19,12 +19,12 @@
             Logout
 
     %nav#notifications
-      %section#autofinger
+      %section#updated_plans
         %h1 Autofinger
-        - fingers = current_account.fingers
+        - updated_plans = current_account.updated_plans
         %ul
-          - fingers.each do |finger|
-            %li= finger.link
+          - updated_plans.each do |plan|
+            %li= plan.link
       %section#planlove
         %h1 Planlove
         - lovers = current_account.recent_lovers
