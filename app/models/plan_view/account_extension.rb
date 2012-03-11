@@ -13,9 +13,12 @@ class PlanView
     # This is quadratic in the number of users.
     # Not to mention unwieldy in the UI.
     def updated_plans
-      plan_views
+      stale = plan_views
+        .select(:id)
         .joins(:plan)
-        .where { plans.updated_at > plan_views.viewed_at }
+        .where { plans.updated_at < plan_views.viewed_at }
+
+      Account.where { id.not_in(stale) }
     end
 
     def plan_view_for(other)
