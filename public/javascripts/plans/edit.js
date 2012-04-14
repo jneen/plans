@@ -7,6 +7,7 @@ Plans.Edit = (function($) {
 
   function processPlan(plan, callback) {
     $.ajax('/'+planName+'/preview', {
+      type: 'post',
       dataType: 'html',
       data: { contents: plan },
       success: callback
