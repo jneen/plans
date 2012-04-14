@@ -6,6 +6,7 @@ class PlansController < ApplicationController
   include AuthenticationHelper
 
   def index
+    @accounts = Account.shown
   end
 
   def show
@@ -42,6 +43,6 @@ private
   end
 
   def find_account
-    @account = Account.find_by_login(params[:id])
+    @account = Account[params[:id]]
   end
 end

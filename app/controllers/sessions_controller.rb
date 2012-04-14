@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    account = Account.find_by_login(params[:login])
+    account = Account[params[:login]]
     
     if account && account.correct_password?(params[:password])
       login_and_redirect(account)

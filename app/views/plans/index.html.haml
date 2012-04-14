@@ -3,5 +3,5 @@
 %section#all-plans
   %h1 All plans
   %ul
-    - Account.all.each do |account|
+    - @accounts.each do |account|
       %li #{account.link}: #{account.name}

@@ -7,8 +7,12 @@ class Account < ActiveRecord::Base
 
   has_one :plan
 
+  def self.shown
+    where { hidden == false }
+  end
+
   def self.[](name)
-    find_by_login(name.to_s)
+    shown.find_by_login(name.to_s)
   end
 
   def password=(pw)

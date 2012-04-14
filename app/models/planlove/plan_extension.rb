@@ -13,7 +13,7 @@ class Planlove
 
         doc.gsub!(/(^|\W)@(\w+)/) do
           account_name = $2
-          if $1 == "\\" or (account = Account.find_by_login(account_name)).blank?
+          if $1 == "\\" or (account = Account[account_name]).blank?
             $&
           else
             planloves[account.id] += 1
