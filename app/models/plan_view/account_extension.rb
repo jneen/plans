@@ -18,7 +18,7 @@ class PlanView
         .joins(:plan)
         .where { plans.updated_at < plan_views.viewed_at }
 
-      Account.where { id.not_in(stale) }
+      Account.shown.where { id.not_in(stale) }
     end
 
     def plan_view_for(other)
