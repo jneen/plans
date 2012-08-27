@@ -33,7 +33,7 @@ class Account < ActiveRecord::Base
   end
 
   def temporary_password!
-    pw = ActiveSupport::SecureRandom.urlsafe_base64(4)
+    pw = SecureRandom.urlsafe_base64(4)
     self.password = pw
     self.temporary_password = true
 
