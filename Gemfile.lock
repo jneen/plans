@@ -112,6 +112,7 @@ GEM
     rubyzip (0.9.6.1)
     sanitize (2.0.3)
       nokogiri (>= 1.4.4, < 1.6)
+    scrypt (1.1.0)
     sprockets (2.1.2)
       hike (~> 1.2)
       rack (~> 1.0)
@@ -147,5 +148,6 @@ DEPENDENCIES
   rspec (~> 2)
   rspec-rails
   sanitize
+  scrypt
   squeel
   unicorn

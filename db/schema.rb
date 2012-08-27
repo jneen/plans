@@ -11,18 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120414012947) do
+ActiveRecord::Schema.define(:version => 20120827113526) do
 
   create_table "accounts", :force => true do |t|
-    t.string   "login",                                 :null => false
-    t.string   "salt",                                  :null => false
-    t.string   "crypted_password",                      :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string   "login",                                  :null => false
+    t.string   "salt"
+    t.string   "crypted_password",                       :null => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
     t.boolean  "temporary_password", :default => false
     t.string   "name"
     t.string   "theme_name"
     t.boolean  "hidden",             :default => false
+    t.string   "password_type",      :default => "sha2"
   end
 
   add_index "accounts", ["login"], :name => "index_accounts_on_login", :unique => true
@@ -31,8 +32,8 @@ ActiveRecord::Schema.define(:version => 20120414012947) do
     t.integer  "account_id"
     t.integer  "viewed_id"
     t.datetime "viewed_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   add_index "plan_views", ["account_id", "viewed_id"], :name => "index_auto_fingers_on_account_id_and_fingered_id", :unique => true
@@ -41,8 +42,8 @@ ActiveRecord::Schema.define(:version => 20120414012947) do
     t.integer  "plan_id"
     t.integer  "account_id"
     t.integer  "count"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   add_index "planloves", ["account_id"], :name => "index_planloves_on_account_id"
@@ -52,8 +53,8 @@ ActiveRecord::Schema.define(:version => 20120414012947) do
     t.text     "contents",   :default => "", :null => false
     t.text     "html",                       :null => false
     t.integer  "account_id",                 :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
   end
 
   add_index "plans", ["account_id"], :name => "index_plans_on_account_id", :unique => true
