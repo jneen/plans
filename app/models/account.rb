@@ -30,7 +30,7 @@ class Account < ActiveRecord::Base
 
       # rehash if the login was successful
       if result
-        self.password = pw
+        self.update_attributes(password: pw)
       end
 
       result
