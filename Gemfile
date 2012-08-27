@@ -5,6 +5,7 @@ gem 'rails', '~> 3.1'
 # models
 gem 'pg'
 gem 'squeel'
+gem 'scrypt'
 
 # views
 gem 'haml'

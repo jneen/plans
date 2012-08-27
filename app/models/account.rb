@@ -13,15 +13,24 @@ class Account < ActiveRecord::Base
 
   def password=(pw)
     self.temporary_password = false
-    self.crypted_password = hash_password(pw)
-  end
-
-  def salt
-    self[:salt] ||= generate_salt
+    self.password_type = 'scrypt'
+    self.crypted_password = SCrypt::Password.create(pw).to_s
   end
 
   def correct_password?(pw)
-    self.crypted_password == hash_password(pw)
+    case password_type
+    when 'scrypt'
+      SCrypt::Password.new(self.crypted_password) == pw
+    when 'sha2'
+      result = self.crypted_password == hash_password(pw)
+
+      # rehash if the login was successful
+      if result
+        self.password = pw
+      end
+
+      result
+    end
   end
 
   def handle
@@ -49,19 +58,12 @@ class Account < ActiveRecord::Base
     !guest?
   end
 
-private
+  # DEPRECATED
   def hash_password(pw)
-    hash_string("--#{self.salt}--#{pw}--")
+    Digest::SHA2.hexdigest("--#{self.salt}--#{pw}--")
   end
 
-  def hash_string(str)
-    Digest::SHA2.hexdigest(str)
-  end
-
-  def generate_salt(bytes=64)
-    ActiveSupport::SecureRandom.base64(bytes)
-  end
-
+private
   before_validation :setup, :on => :create
   def setup
     self.plan ||= build_plan
